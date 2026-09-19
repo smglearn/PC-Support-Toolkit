@@ -11,19 +11,34 @@ export default function Home() {
       </header>
 
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Link href="/diagnostics" className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50 hover:border-neutral-700 transition">
+        {/* Diagnostics */}
+        <Link
+          href="/diagnostics"
+          className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50 hover:border-neutral-700 transition"
+        >
           <h2 className="text-xl font-semibold mb-2">Diagnostics →</h2>
-          <p className="text-sm text-neutral-400">System checks and troubleshooting workflows.</p>
+          <p className="text-sm text-neutral-400">
+            System checks and troubleshooting workflows.
+          </p>
         </Link>
 
-        <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
-          <h2 className="text-xl font-semibold mb-2">Command Library</h2>
-          <p className="text-sm text-neutral-400">PowerShell, CMD, and Terminal cheat sheets.</p>
-        </div>
+        {/* Command Library */}
+        <Link
+          href="/commands"
+          className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50 hover:border-neutral-700 transition"
+        >
+          <h2 className="text-xl font-semibold mb-2">Command Library →</h2>
+          <p className="text-sm text-neutral-400">
+            PowerShell, CMD, and Terminal cheat sheets.
+          </p>
+        </Link>
 
+        {/* Repair Logs */}
         <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
           <h2 className="text-xl font-semibold mb-2">Repair Logs</h2>
-          <p className="text-sm text-neutral-400">Track and log client machine maintenance.</p>
+          <p className="text-sm text-neutral-400">
+            Track and log client machine maintenance.
+          </p>
         </div>
       </div>
     </main>
