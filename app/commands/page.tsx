@@ -1,6 +1,17 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function CommandsPage() {
+  const [copiedCmd, setCopiedCmd] = useState<string | null>(null);
+
+  const copyToClipboard = (cmd: string) => {
+    navigator.clipboard.writeText(cmd);
+    setCopiedCmd(cmd);
+    setTimeout(() => setCopiedCmd(null), 2000);
+  };
+
   const commandCategories = [
     {
       category: "Network & DNS",
@@ -25,7 +36,7 @@ export default function CommandsPage() {
           ← Back to Dashboard
         </Link>
         <h1 className="text-2xl font-bold tracking-tight mb-2">Command Library</h1>
-        <p className="text-neutral-400 text-sm mb-6">Frequently used CLI triage, repair, and configuration snippets.</p>
+        <p className="text-neutral-400 text-sm mb-6">Click any command box to copy it directly to your clipboard.</p>
 
         <div className="space-y-6">
           {commandCategories.map((group) => (
@@ -35,9 +46,16 @@ export default function CommandsPage() {
                 {group.commands.map((item) => (
                   <div key={item.label} className="flex flex-col gap-1.5">
                     <span className="text-xs text-neutral-400">{item.label}</span>
-                    <code className="text-xs font-mono bg-black/60 px-3 py-1.5 rounded text-sky-400 block overflow-x-auto border border-neutral-800">
-                      {item.cmd}
-                    </code>
+                    <button
+                      type="button"
+                      onClick={() => copyToClipboard(item.cmd)}
+                      className="text-left text-xs font-mono bg-black/60 hover:bg-neutral-900 border border-neutral-800 px-3 py-2 rounded text-sky-400 flex items-center justify-between transition group"
+                    >
+                      <span className="overflow-x-auto">{item.cmd}</span>
+                      <span className="text-[10px] uppercase font-sans tracking-wider text-neutral-500 group-hover:text-neutral-300 ml-3 shrink-0">
+                        {copiedCmd === item.cmd ? '✓ Copied' : 'Copy'}
+                      </span>
+                    </button>
                   </div>
                 ))}
               </div>
