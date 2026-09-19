@@ -34,12 +34,15 @@ export default function Home() {
         </Link>
 
         {/* Repair Logs */}
-        <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
-          <h2 className="text-xl font-semibold mb-2">Repair Logs</h2>
+        <Link
+          href="/repair-logs"
+          className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50 hover:border-neutral-700 transition"
+        >
+          <h2 className="text-xl font-semibold mb-2">Repair Logs →</h2>
           <p className="text-sm text-neutral-400">
             Track and log client machine maintenance.
           </p>
-        </div>
+        </Link>
       </div>
     </main>
   );
